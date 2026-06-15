@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ndege Chopper | Naivasha Boda</title>
+
+<link rel="manifest" href="manifest.json">
+
+<style>
+:root{
+
+  --bg:#f5f7fa;
+  --card:#fff;
+  --text:#111;
+  --muted:#666;
+  --accent:#25D366;
+  --blue:#2563eb;
+  --gold:#fbbf24;
+}
+
+body.dark{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#f1f5f9;
+  --muted:#94a3b8;
+}
+
+body{
+  margin:0;
+  font-family:Arial;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.3s;
+}
+
+.container{
+  max-width:750px;
+  margin:auto;
+}
+
+/* HERO */
+.hero{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:25px;
+  background:linear-gradient(135deg,#0f172a,#1e293b);
+  color:white;
+}
+
+.hero img{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  object-position:center 20%;
+  border:3px solid white;
+}
+
+/* CARDS */
+.card{
+  background:var(--card);
+  margin:15px;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+/* BUTTONS */
+.btns{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  flex:1;
+  padding:14px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:bold;
+  color:white;
+  text-decoration:none;
+}
+
+.whatsapp{background:var(--accent);}
+.call{background:var(--blue);}
+.maps{background:#f97316;}
+
+/* FLOAT */
+.float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:var(--accent);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  text-decoration:none;
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* STARS */
+.stars{
+  display:flex;
+  gap:6px;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.stars span{
+  color:#cbd5e1;
+  transition:0.2s;
+}
+
+.stars span.active{
+  color:var(--gold);
+  transform:scale(1.2);
+}
+
+/* INPUTS */
+input, textarea{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+/* REVIEWS */
+.review{
+  padding:10px;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+  animation:fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(5px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* BADGE */
+.badge{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 10px;
+  border-radius:20px;
+  background:var(--gold);
+  color:#000;
+  font-weight:bold;
+  font-size:12px;
+}
+
+/* DARK TOGGLE */
+.toggle{
+  position:fixed;
+  top:20px;
+  right:20px;
+  background:#111;
+  color:white;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+  z-index:10;
+}
+</style>
+</head>
+
+<body>
+
+<div class="toggle" onclick="document.body.classList.toggle('dark')">🌙</div>
+
+<div class="container">
+
+<!-- HERO with proper image cropping -->
+<div class="hero">
+  <img src="profile.jpeg" alt="Ndege Chopper Profile"/>
+  <div>
+    <h1>🛵 NDEGE CHOPPER</h1>
+    <p>Naivasha Boda Service</p>
+    <div id="badge"></div>
+  </div>
+</div>
+
+<!-- INFO -->
+<div class="card">
+  <h2>Rider Info</h2>
+  <p>📍 Party Island Stage</p>
+  <p>🛵 KMGL 445R</p>
+  <p>📞 +254728765853</p>
+
+  <div class="btns">
+    <a class="btn whatsapp"
+       href="https://wa.me/254728765853?text=Hi%20Ndege%20Chopper%20I%20need%20a%20ride"
+       target="_blank">WhatsApp</a>
+
+    <a class="btn call"
+       href="tel:+254728765853">Call</a>
+
+    <a class="btn maps"
+       href="https://www.google.com/maps"
+       target="_blank">Maps</a>
+  </div>
+</div>
+
+<!-- WHY -->
+<div class="card">
+  <h2>Why Ride With Ndege</h2>
+  <p>✅ Safe night rides</p>
+  <p>✅ Helmet provided</p>
+  <p>✅ Knows Naivasha routes</p>
+  <p>✅ M-Pesa accepted</p>
+</div>
+
+<!-- GALLERY -->
+<div class="card">
+  <h2>Bike Gallery</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+    <img src="profile.jpeg" style="width:100%;border-radius:10px;">
+    <img src="gallery.jpeg" style="width:100%;border-radius:10px;">
+    
+  </div>
+</div>
+
+<!-- REVIEW -->
+<div class="card">
+  <h2>⭐ Leave a Review</h2>
+
+  <input id="name" placeholder="Your Name"/>
+
+  <div class="stars" id="stars">
+    <span data-value="1">★</span>
+    <span data-value="2">★</span>
+    <span data-value="3">★</span>
+    <span data-value="4">★</span>
+    <span data-value="5">★</span>
+  </div>
+
+  <textarea id="comment" placeholder="Your experience"></textarea>
+
+  <button onclick="submitReview()">Submit Review</button>
+
+  <h3>Live Rating: <span id="avg">0</span>/5</h3>
+  <p>Total Reviews: <span id="count">0</span></p>
+
+  <div id="reviews"></div>
+
+  <div id="badge2"></div>
+</div>
+
+</div>
+
+<!-- FLOAT -->
+<a class="float" href="https://wa.me/254728765853">💬</a>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbw71wptYh_vnKVaDkE7uFd91P7WkeMULniCuFqY36ieb7m4yF8RirBMhezjVua7Exno/exec";
+
+/* STAR SYSTEM */
+let rating = 0;
+
+document.querySelectorAll("#stars span").forEach(star=>{
+  star.onclick = ()=>{
+    rating = Number(star.dataset.value);
+
+    document.querySelectorAll("#stars span").forEach(s=>s.classList.remove("active"));
+
+    for(let i=0;i<rating;i++){
+      document.querySelectorAll("#stars span")[i].classList.add("active");
+    }
+  }
+});
+
+/* SUBMIT REVIEW TO CLOUD */
+async function submitReview(){
+  const name = document.getElementById("name").value;
+  const comment = document.getElementById("comment").value;
+
+  if(!name || !rating){
+    alert("Please fill all fields");
+    return;
+  }
+
+  const payload = { name, rating, comment };
+
+  try{
+    await fetch(API_URL,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{
+        "Content-Type":"text/plain"
+      },
+      body: JSON.stringify(payload)
+    });
+
+
+    document.getElementById("name").value = "";
+    document.getElementById("comment").value = "";
+    rating = 0;
+
+    document.querySelectorAll("#stars span")
+      .forEach(s => s.classList.remove("active"));
+
+    loadCloud();
+    alert("Review submitted successfully ⭐");
+
+  }catch(err){
+    console.error(err);
+    alert("Failed to submit review. Check Apps Script deployment.");
+  }
+}
+
+/* LOAD SHARED DATA */
+async function loadCloud(){
+  try{
+    const res = await fetch(API_URL + "?t=" + Date.now());
+    const data = await res.json();
+
+    // rating + count
+    document.getElementById("avg").innerText = data.avg;
+    document.getElementById("count").innerText = data.total;
+
+    // badge system
+    let badge = "";
+
+    if(data.avg >= 4.5) badge = "🔥 TOP RATED RIDER";
+    else if(data.avg >= 3.5) badge = "⭐ GOOD RIDER";
+    else if(data.total > 0) badge = "🟡 BUILDING REPUTATION";
+    else badge = "🚧 NEW RIDER";
+
+    document.getElementById("badge").innerHTML = badge;
+    document.getElementById("badge2").innerHTML = badge;
+
+    // reviews
+    const list = data.reviews.reverse().map(r =>
+      `<div class="review">
+        <b>${r.name}</b> ⭐${r.rating}<br>
+        ${r.comment}
+      </div>`
+    ).join("");
+
+    document.getElementById("reviews").innerHTML = list;
+  } catch(err){
+    console.log("Live update failed:", err);
+  }
+}
+
+loadCloud();
+setInterval(loadCloud, 4000);
+</script>
+
+</body>
+</html>
