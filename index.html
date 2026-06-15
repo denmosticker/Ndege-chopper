@@ -339,14 +339,16 @@ async function loadCloud(){
     document.getElementById("badge2").innerHTML = badge;
 
     // reviews
-    const list = data.reviews.reverse().map(r =>
+    // Fix: Ensure data.reviews is an array before calling reverse()
+    // This prevents crashes if the backend returns no reviews or an unexpected format.
+    const reviewsToDisplay = (data.reviews || []).reverse().map(r =>
       `<div class="review">
         <b>${r.name}</b> ⭐${r.rating}<br>
         ${r.comment}
       </div>`
     ).join("");
 
-    document.getElementById("reviews").innerHTML = list;
+    document.getElementById("reviews").innerHTML = reviewsToDisplay;
   } catch(err){
     console.log("Live update failed:", err);
   }
